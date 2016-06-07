@@ -35,10 +35,10 @@ ui     <- fluidPage(
 
 
 server <- function(input, output, session) {
-        load("regression.lm.RData")
+        load("regression.lm.RData")                           # load the predictive regression model
         
-        intercept <- summary(regression.lm)$coefficients[1,1] # extract intercept
-        slope     <- summary(regression.lm)$coefficients[2,1] # extract slope
+        intercept <- summary(regression.lm)$coefficients[1,1] # extract intercept coefficient
+        slope     <- summary(regression.lm)$coefficients[2,1] # extract slope coefficient
         
         
         lat <- reactive({
@@ -49,7 +49,7 @@ server <- function(input, output, session) {
         
         output$table <- renderText({
                 
-                paste("The temperature for the chosen latitude is ' ", lat()," ' degree Farenhite.") #print the new output
+                paste("The temperature for the chosen latitude is ' ", lat()," ' degree Farenhite.") #print updated temprature
         })
         
 }
