@@ -17,12 +17,7 @@ ui     <- fluidPage(
         h1("Coffee farm Temperature Predictor for USA"),
         sidebarLayout(
                 sidebarPanel(
-                        # numericInput(              # entering input
-                        #         "new_lat", 
-                        #         "Enter latitude between 20 and 60:", 
-                        #         21
-                        # ),
-                        
+                       
                         sliderInput("new_lat",    # sliding input
                                     "Use the slider to select the latitude 
                                     you want to predict the Temperature for: ", 
@@ -41,20 +36,6 @@ ui     <- fluidPage(
 
 server <- function(input, output, session) {
         load("regression.lm.RData")
-        # us_weather_df <- read.csv("./data/us_weather_df.csv") # load the data frame
-        # apr <- us_weather_df$apr                            
-        # lat <- us_weather_df$lat
-        # df  <-  data.frame(apr,lat)
-        # regression.lm <- lm(df$apr ~ df$lat)
-        
-        # > regression.lm
-        # 
-        # Call:
-        #         lm(formula = df$apr ~ df$lat)
-        # 
-        # Coefficients:
-        #         (Intercept)       df$lat  
-        # 100.761       -1.204  
         
         intercept <- summary(regression.lm)$coefficients[1,1] # extract intercept
         slope     <- summary(regression.lm)$coefficients[2,1] # extract slope
