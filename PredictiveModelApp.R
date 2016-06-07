@@ -37,13 +37,14 @@ ui     <- fluidPage(
 server <- function(input, output, session) {
         load("regression.lm.RData")                           # load the predictive regression model
         
-        intercept <- summary(regression.lm)$coefficients[1,1] # extract intercept coefficient
-        slope     <- summary(regression.lm)$coefficients[2,1] # extract slope coefficient
+        # extract intercept and sloe coefficient
+        intercept <- summary(regression.lm)$coefficients[1,1] 
+        slope     <- summary(regression.lm)$coefficients[2,1] 
         
-        
+        # predict new latitude based on the linear model equation
         lat <- reactive({
                 
-                newlat  <- round(intercept + slope * input$new_lat, 2) # predict new latitude based on the linear model equation
+                newlat  <- round(intercept + slope * input$new_lat, 2) 
         })
         
         
