@@ -49,8 +49,8 @@ server <- function(input, output, session) {
         
         
         output$table <- renderText({
-                
-                paste("The temperature for the chosen latitude is ' ", lat()," ' degree Farenhite.") #print updated temprature
+        #print updated temprature       
+                paste("The temperature for the chosen latitude is ' ", lat()," ' degree Farenhite.") 
         })
         
 }
