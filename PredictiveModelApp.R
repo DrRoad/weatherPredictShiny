@@ -7,7 +7,6 @@
 # Date:        June 2, 2016                                                                                   #
 ###############################################################################################################
 
-#setwd("~/Documents/Data-Science/Shiny/weatherPredict")
 
 library(shiny)
 library(stats)
@@ -35,13 +34,14 @@ ui     <- fluidPage(
 
 
 server <- function(input, output, session) {
-        load("regression.lm.RData")                           # load the predictive regression model
+        # load the predictive regression model
+        load("regression.lm.RData")                           
         
-        # extract intercept and sloe coefficient
+        # extract 'intercept' and 'slope' coefficient froom the model
         intercept <- summary(regression.lm)$coefficients[1,1] 
         slope     <- summary(regression.lm)$coefficients[2,1] 
         
-        # predict new latitude based on the linear model equation
+        # predict temprature based on latitude from the linear model equation
         lat <- reactive({
                 
                 newlat  <- round(intercept + slope * input$new_lat, 2) 
